@@ -1,6 +1,6 @@
 import { Component } from '@angular/core';
 import { FormGroup, FormControl, Validators } from '@angular/forms';
-import { DateFormControl } from '../date-form-control'; 
+import { DateFormControl } from '../date-form-control';
 @Component({
   selector: 'app-card-form',
   templateUrl: './card-form.component.html',
@@ -28,4 +28,7 @@ export class CardFormComponent {
       Validators.minLength(5),
     ]),
   });
+  onClickSubmit() {
+    this.cardForm.reset();
+  }
 }

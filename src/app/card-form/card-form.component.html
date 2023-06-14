@@ -1,10 +1,27 @@
-<form [formGroup]="cardForm">
-    <app-input [label]="'Name'" [control]="cardForm.controls.name"></app-input>
-    <app-input [label]="'cardNumber'" [control]="cardForm.controls.cardNumber"></app-input>
-    <app-input [label]="'expiration'" [control]="cardForm.controls.expiration"></app-input>
-    <app-input [label]="'securityCode'" [control]="cardForm.controls.securityCode"></app-input>
-    <button class="button is-primary" [disabled]="cardForm.invalid">Submit</button>
-</form>
+<div class="columns">
+    <div class="column">
+        <app-card [name]="cardForm.controls.name.value" [cardNumber]="cardForm.controls.cardNumber.value"
+            [expiration]="cardForm.controls.expiration.value"></app-card>
+    </div>
+    <div class="column">
+        <form [formGroup]="cardForm">
+            <app-input [label]="'Name'" [control]="cardForm.controls.name"></app-input>
+            <app-input [label]="'cardNumber'" [control]="cardForm.controls.cardNumber"></app-input>
+            <div class="columns">
+                <div class="column">
+                    <app-input [label]="'expiration'" [control]="cardForm.controls.expiration"></app-input>
+                </div>
+                <div class="column">
+                    <app-input [label]="'securityCode'" [control]="cardForm.controls.securityCode"></app-input>
+                </div>
+            </div>
+            <div class="buttons">
+                <button class="button is-primary" [disabled]="cardForm.invalid">Submit</button>
+                <button class="button is-warning" (click)="onClickSubmit()">Reset</button>
+            </div>
+        </form>
+    </div>
+</div>
 <hr>
 <div>form content: {{cardForm.value | json}}</div>
 <div>Form is valid: {{cardForm.valid}}</div>
